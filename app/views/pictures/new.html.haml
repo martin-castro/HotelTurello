@@ -1,0 +1,6 @@
+=render "title", name: 'Cargar Imagen'
+= semantic_form_for @picture, :html => { :multipart => true } do |form|
+  = form.file_field :avatar
+  = form.actions do
+    = form.action :submit, :as => :button
+    = form.action :cancel, :as => :link

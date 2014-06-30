@@ -1,0 +1,9 @@
+=render "title", name: 'Galería de Imágenes'
+- @pictures.each do |picture|
+  = link_to image_tag(picture.avatar.url(:medium)),picture_path(picture.id)
+
+= content_tag :a, "Modal", :href => "#modal", :class => 'btn', :data => {:toggle => 'modal'}
+= modal_dialog :id => "modal",                                                       |
+  :header => { :show_close => true, :dismiss => 'modal', :title => 'Modal header' }, |
+  :body   => 'This is the body',                                                     |
+  :footer => content_tag(:button, 'Save', :class => 'btn')                           |
