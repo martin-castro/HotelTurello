@@ -6,6 +6,10 @@ class PicturesController < ApplicationController
   end
   def show
     @picture = Picture.find(params[:id])
+    respond_to do |format|
+      format.html {  @picture }
+      format.json { render json: @picture }
+    end
   end
   def create
     @picture = Picture.create( picture_params )

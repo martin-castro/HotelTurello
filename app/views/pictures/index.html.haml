@@ -1,9 +1,7 @@
 =render "title", name: 'Galería de Imágenes'
+- count = 0
 - @pictures.each do |picture|
-  = link_to image_tag(picture.avatar.url(:medium)),picture_path(picture.id)
+  - count=count+1
+  = link_to image_tag(picture.avatar.url(:medium)),"http://localhost:3000"+picture.avatar.url(:original), data: {toggle: 'lightbox', gallery: 'multiimages', type:'image'}, id:  'picnum_'+count.to_s
 
-= content_tag :a, "Modal", :href => "#modal", :class => 'btn', :data => {:toggle => 'modal'}
-= modal_dialog :id => "modal",                                                       |
-  :header => { :show_close => true, :dismiss => 'modal', :title => 'Modal header' }, |
-  :body   => 'This is the body',                                                     |
-  :footer => content_tag(:button, 'Save', :class => 'btn')                           |
+-# :footer => content_tag(:button, 'Save', :class => 'btn') 
